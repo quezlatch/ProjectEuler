@@ -15,8 +15,8 @@ let problems = testList "first few problems" [
                                 yield! s j (i + j)
                             }
                         s 1 1
-                    let actual = fibonacci |> Seq.take 6 |> Seq.toList
-                    Assert.Equal("",[1; 2; 3; 5; 8; 13], actual)
+                    let actual = fibonacci |> Seq.where (fun i -> i &&& 1 = 0) |> Seq.takeWhile (fun i -> i < 4000000) |> Seq.sum
+                    Assert.Equal("", 4613732, actual)
                 
      ]
 
